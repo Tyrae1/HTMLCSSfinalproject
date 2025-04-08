@@ -6,8 +6,20 @@
     font-style: normal;
     box-sizing: border-box;
 }
-$font-bold: "Montserrat Bold";
-$font-regular: "Montserrat Regular";
+$font-family: "Montserrat", sans-serif;
+$font-bold: (
+    family: $font-family,
+    weight: 700
+);
+$font-regular: (
+    family: $font-family,
+    weight: 400
+);
+@mixin font($font){
+    font-family: map-get($font, family);
+    font-weight: map-get($font, weight);  
+}
+$color-white-basic: #fff;
 $color-main-regular: #323264;
 $color-main-alt: #46466E;
 $color-main-soft: #686887;
@@ -24,3 +36,89 @@ $gradien-soft: linear-gradient(42deg, #323264 14.33%, #323264 51.39%, #7A425E 87
 $gradien-red: linear-gradient(323deg, #F0145A 6.7%, #693264 70.36%);
 $gradien-supersoft: linear-gradient(229deg, #323264 11.93%, #323264 57.17%, #643E72 87.46%);
 $gradient-red-text: linear-gradient(90deg, #F0145A 0.84%, #EF8080 99.96%);
+.header{
+    padding: 10px 15px;
+    background-color: $color-grey-bg;
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    @include font($font-bold);
+    line-height: normal;
+    color: $color-grey-text;
+}
+.header-lang{
+    display: flex;
+    flex-flow: row wrap;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: 0.2s ease;
+        input[type="radio"] {display: none;}
+        label{ display: flex;
+            cursor: pointer;
+            padding: 5px 7px;
+            }
+        input[type="radio"]:checked + label {
+            background-color: $color-accent;
+            color: $color-white-basic;
+            border-radius: 8px;}
+}
+.header-tel{font-size: 16px;}
+.head{
+    @include font($font-regular);
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.head-logo{
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0 10px;
+    font-size: 20px;
+    line-height: normal;
+    color: $color-main-regular;
+}
+.head-logo-1{
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3.467px;
+}
+.head-logo-2{
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: start;
+    margin-top: 4px;
+}
+.head-menu-button{
+    display: flex;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+}
+.head-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 12px;
+}
+.menu-exit{
+    display: flex;
+    max-width: 32px;
+    max-height: 32px;
+    background-color: none;
+    background: none;
+    border: none;
+}
+.menu-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 0;
+    gap: 15px;
+}
